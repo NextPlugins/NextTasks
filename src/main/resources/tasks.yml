@@ -14,7 +14,7 @@ tasks:
         - 'say Hello World :)'
     task2:
       scheduler:
-        date: 'EVERYDAY:1:30'
+        date: 'TUESDAY:1:30'
       description: "Distribuir caixas."
       commands:
         - 'caixa all'
