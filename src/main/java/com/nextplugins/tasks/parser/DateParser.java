@@ -28,8 +28,6 @@ public final class DateParser {
                     .replace("D", day)
             );
 
-            System.out.println(task.getDateExpression());
-
         });
 
     }

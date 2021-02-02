@@ -1,18 +1,16 @@
 package com.nextplugins.tasks;
 
 import com.nextplugins.tasks.configuration.registry.ConfigurationRegistry;
+import com.nextplugins.tasks.job.JobLoader;
 import com.nextplugins.tasks.manager.TaskManager;
 import com.nextplugins.tasks.parser.DateParser;
-import lombok.Getter;
 import me.bristermitten.pdm.PluginDependencyManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-@Getter
 public final class NextTasks extends JavaPlugin {
 
     private TaskManager taskManager;
-    private DateParser dateParser;
 
     @Override
     public void onEnable() {
@@ -24,8 +22,9 @@ public final class NextTasks extends JavaPlugin {
                 taskManager = new TaskManager();
                 taskManager.loadTasks();
 
-                dateParser = new DateParser(taskManager);
-                dateParser.parse();
+                new DateParser(taskManager).parse();
+
+                new JobLoader(taskManager).executeAllJobs();
 
                 getLogger().info("Plugin inicializado com sucesso.");
             } catch (Throwable t) {
