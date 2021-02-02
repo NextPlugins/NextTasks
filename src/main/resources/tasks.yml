@@ -1,0 +1,21 @@
+tasks:
+  task-list:
+    # id da task, precisa sempre ser diferente das outras.
+    task1:
+      # data em que será sempre executada.
+      scheduler:
+        # dia e horário em que será executado (o dia em inglês).
+        # obs: se quiser que execute todos os dias, utilize EVERYDAY no valor.
+        date: 'EVERYDAY:2:00'
+      # descrição da task.
+      description: "Dizer 'Olá mundo'"
+      # comandos que serão executados no horário definido.
+      commands:
+        - 'say Hello World :)'
+    task2:
+      scheduler:
+        date: 'EVERYDAY:1:30'
+      description: "Distribuir caixas."
+      commands:
+        - 'caixa all'
+        - 'say Foi dado uma caixa para todos os jogadores online!'
