@@ -3,14 +3,19 @@ package com.nextplugins.tasks;
 import com.nextplugins.tasks.configuration.registry.ConfigurationRegistry;
 import com.nextplugins.tasks.job.JobLoader;
 import com.nextplugins.tasks.manager.TaskManager;
-import com.nextplugins.tasks.parser.DateParser;
+import com.nextplugins.tasks.parser.TimeExpressionParser;
+import lombok.Getter;
 import me.bristermitten.pdm.PluginDependencyManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NextTasks extends JavaPlugin {
 
-    private TaskManager taskManager;
+    @Getter private TaskManager taskManager;
+
+    public static NextTasks getInstance() {
+        return getPlugin(NextTasks.class);
+    }
 
     @Override
     public void onEnable() {
@@ -22,7 +27,7 @@ public final class NextTasks extends JavaPlugin {
                 taskManager = new TaskManager();
                 taskManager.loadTasks();
 
-                new DateParser(taskManager).parse();
+                new TimeExpressionParser(taskManager).parse();
 
                 new JobLoader(taskManager).executeAllJobs();
 

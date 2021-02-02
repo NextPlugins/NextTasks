@@ -4,7 +4,7 @@ import com.nextplugins.tasks.manager.TaskManager;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public final class DateParser {
+public final class TimeExpressionParser {
 
     private final String MODEL = "0 M H ? * D";
 

@@ -22,17 +22,14 @@ public final class JobLoader {
 
             JobDetail detail = JobBuilder.newJob(JobExecutor.class)
                     .withIdentity(task.getId(), "NextPlugins")
+                    .usingJobData("task", task.getId())
                     .build();
-
-            System.out.println(detail.toString());
 
             CronTrigger trigger = TriggerBuilder.newTrigger()
                     .withIdentity(task.getId() + "-TRIGGER", "NextPlugins")
                     .withSchedule(CronScheduleBuilder.cronSchedule(task.getDateExpression()))
-                    .forJob(task.getId(), "NextPlugins")
+                    .forJob(detail)
                     .build();
-
-            System.out.println(trigger.toString());
 
             scheduler.scheduleJob(detail, trigger);
 
