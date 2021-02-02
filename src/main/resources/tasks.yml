@@ -6,7 +6,7 @@ tasks:
       scheduler:
         # dia e horário em que será executado (o dia em inglês).
         # obs: se quiser que execute todos os dias, utilize EVERYDAY no valor.
-        date: 'EVERYDAY:2:00'
+        date: 'EVERYDAY:02:05'
       # descrição da task.
       description: "Dizer 'Olá mundo'"
       # comandos que serão executados no horário definido.
@@ -14,7 +14,7 @@ tasks:
         - 'say Hello World :)'
     task2:
       scheduler:
-        date: 'TUESDAY:1:30'
+        date: 'TUESDAY:01:30'
       description: "Distribuir caixas."
       commands:
         - 'caixa all'

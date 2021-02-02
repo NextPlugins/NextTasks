@@ -2,6 +2,7 @@ package com.nextplugins.tasks.configuration.registry;
 
 import com.henryfabio.minecraft.configinjector.bukkit.injector.BukkitConfigurationInjector;
 import com.nextplugins.tasks.NextTasks;
+import com.nextplugins.tasks.configuration.GeneralConfiguration;
 import com.nextplugins.tasks.configuration.TaskConfiguration;
 import lombok.Data;
 
@@ -19,6 +20,7 @@ public final class ConfigurationRegistry {
         );
 
         configurationInjector.injectConfiguration(
+                GeneralConfiguration.instance(),
                 TaskConfiguration.instance()
         );
     }

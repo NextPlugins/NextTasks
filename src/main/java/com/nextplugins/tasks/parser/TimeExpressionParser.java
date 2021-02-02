@@ -19,8 +19,8 @@ public final class TimeExpressionParser {
             String rawDayValue = split[0];
             String day = rawDayValue.equalsIgnoreCase("EVERYDAY") ? "*" : rawDayValue.substring(0, 3);
 
-            String hour = split[1];
-            String minute = split[2];
+            String hour = split[1].replace("0", "");
+            String minute = split[2].replace("0", "");
 
             task.setDateExpression(MODEL
                     .replace("M", minute)

@@ -1,5 +1,6 @@
 package com.nextplugins.tasks;
 
+import com.nextplugins.tasks.command.registry.CommandRegistry;
 import com.nextplugins.tasks.configuration.registry.ConfigurationRegistry;
 import com.nextplugins.tasks.job.JobLoader;
 import com.nextplugins.tasks.manager.TaskManager;
@@ -30,6 +31,8 @@ public final class NextTasks extends JavaPlugin {
                 new TimeExpressionParser(taskManager).parse();
 
                 new JobLoader(taskManager).executeAllJobs();
+
+                CommandRegistry.of(this).register();
 
                 getLogger().info("Plugin inicializado com sucesso.");
             } catch (Throwable t) {

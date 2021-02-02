@@ -11,5 +11,6 @@ public class Task {
     private String id;
     private Job job;
     private String dateExpression;
+    private String formattedExecutionDate;
 
 }

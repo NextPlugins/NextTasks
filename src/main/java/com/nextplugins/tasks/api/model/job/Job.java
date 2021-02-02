@@ -10,5 +10,6 @@ import java.util.List;
 public class Job {
 
     private List<String> commandList;
+    private String description;
 
 }
