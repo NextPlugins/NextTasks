@@ -1,0 +1,22 @@
+#      _   _           _     _____  _             _                #
+#     | \ | |         | |   |  __ \| |           (_)               #
+#     |  \| | _____  _| |_  | |__) | |_   _  __ _ _ _ __  ___      #
+#     | . ` |/ _ \ \/ / __| |  ___/| | | | |/ _` | | '_ \/ __|     #
+#     | |\  |  __/>  <| |_  | |    | | |_| | (_| | | | | \__ \     #
+#     |_| \_|\___/_/\_\\__| |_|    |_|\__,_|\__, |_|_| |_|___/     #
+#                                           __/ |                  #
+#                                          |___/                   #
+#                       Servidor de Suporte                        #
+#                      discord.gg/JtTN7E6A2q                       #
+
+plugin:
+  messages:
+    task-list:
+      header:
+        - ''
+        - '&aTarefas agendadas'
+        - ''
+      body: '&7 [$executionDate]&f ➡&a $taskDescription'
+      footer:
+        - ''
+    no-permission: '&cVocê não tem permissão para utilizar este comando!'
