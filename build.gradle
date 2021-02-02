@@ -14,7 +14,6 @@ tasks.build.dependsOn('pdm', 'shadowJar')
 
 repositories {
     mavenCentral()
-    mavenLocal()
     jcenter()
 
     maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
@@ -29,10 +28,11 @@ dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
 
     implementation 'com.github.HenryFabio:inventory-api:2.0.3'
+    implementation 'com.github.HenryFabio:configuration-injector:main-SNAPSHOT'
     implementation 'org.bstats:bstats-bukkit:1.8'
 
     pdm 'com.github.SaiintBrisson:command-framework:1.1.0'
-    pdm 'org.quartz-scheduler:quartz:2.4.0-SNAPSHOT'
+    pdm 'org.quartz-scheduler:quartz:2.3.2'
 
     def lombok = 'org.projectlombok:lombok:1.18.16'
     compileOnly lombok
@@ -47,9 +47,9 @@ bukkit {
 
 shadowJar {
     archiveName("${project.name}-${project.version}.jar")
-    relocate 'com.henryfabio.minecraft.inventoryapi', 'com.nextplugins.${project.name}.libs.inventoryapi'
-    relocate 'com.henryfabio.sqlprovider', 'com.nextplugins.${project.name}.libs.sqlprovider'
-    relocate 'org.bstats', 'com.nextplugins.${project.name}.libs.bstats'
+    relocate 'com.henryfabio.minecraft.inventoryapi', 'com.nextplugins.tasks.libs.inventoryapi'
+    relocate 'com.henryfabio.minecraft.configinjector', 'com.nextplugins.tasks.libs.configinjector'
+    relocate 'org.bstats', 'com.nextplugins.tasks.libs.bstats'
 }
 
 compileJava {
