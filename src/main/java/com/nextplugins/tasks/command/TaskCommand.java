@@ -3,6 +3,7 @@ package com.nextplugins.tasks.command;
 import com.nextplugins.tasks.api.model.Task;
 import com.nextplugins.tasks.configuration.GeneralConfiguration;
 import com.nextplugins.tasks.manager.TaskManager;
+import com.nextplugins.tasks.util.TextUtil;
 import lombok.RequiredArgsConstructor;
 import me.saiintbrisson.minecraft.command.annotation.Command;
 import me.saiintbrisson.minecraft.command.command.Context;
@@ -25,13 +26,12 @@ public final class TaskCommand {
 
         GeneralConfiguration.get(GeneralConfiguration::taskListHeader).forEach(player::sendMessage);
         for (Task task : taskManager.getTasks().values()) {
-            player.sendMessage(GeneralConfiguration.get(GeneralConfiguration::taskListBody)
+            player.spigot().sendMessage(TextUtil.sendTextComponent(GeneralConfiguration.get(GeneralConfiguration::taskListBody)
                     .replace("$executionDate", task.getFormattedExecutionDate())
-                    .replace("$taskDescription", task.getJob().getDescription())
-            );
+                    .replace("$taskDescription", task.getJob().getDescription()), "§aId da task:§f #" + task.getId()));
+
         }
         GeneralConfiguration.get(GeneralConfiguration::taskListFooter).forEach(player::sendMessage);
     }
-
 
 }

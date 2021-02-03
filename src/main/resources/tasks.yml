@@ -1,7 +1,7 @@
 tasks:
   task-list:
     # id da task, precisa sempre ser diferente das outras.
-    task1:
+    '1':
       # data em que será sempre executada.
       scheduler:
         # dia e horário em que será executado (o dia em inglês).
@@ -12,7 +12,7 @@ tasks:
       # comandos que serão executados no horário definido.
       commands:
         - 'say Hello World :)'
-    task2:
+    '2':
       scheduler:
         date: 'TUESDAY:01:30'
       description: "Distribuir caixas."
