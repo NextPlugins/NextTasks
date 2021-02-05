@@ -27,7 +27,6 @@ repositories {
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
 
-    implementation 'com.github.HenryFabio:inventory-api:2.0.3'
     implementation 'com.github.HenryFabio:configuration-injector:main-SNAPSHOT'
     implementation 'org.bstats:bstats-bukkit:1.8'
 
@@ -47,7 +46,6 @@ bukkit {
 
 shadowJar {
     archiveName("${project.name}-${project.version}.jar")
-    relocate 'com.henryfabio.minecraft.inventoryapi', 'com.nextplugins.tasks.libs.inventoryapi'
     relocate 'com.henryfabio.minecraft.configinjector', 'com.nextplugins.tasks.libs.configinjector'
     relocate 'org.bstats', 'com.nextplugins.tasks.libs.bstats'
 }
