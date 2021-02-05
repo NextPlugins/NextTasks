@@ -1,5 +1,7 @@
 # NextTasks
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/582094101ee0492a814c189dd042ce5b)](https://app.codacy.com/gh/NextPlugins/NextTasks?utm_source=github.com&utm_medium=referral&utm_content=NextPlugins/NextTasks&utm_campaign=Badge_Grade)
+
 Um simples sistema de automação de comandos, crie tarefas para serem executadas na exata data configurada. Contém uma pequena [API](https://github.com/NextPlugins/NextTasks/blob/main/src/main/java/com/nextplugins/tasks/api/NextTasksAPI.java) para desenvolvedores. [Prints in-game](https://imgur.com/a/k69BHiR)
 
 ## Comandos
