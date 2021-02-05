@@ -4,6 +4,7 @@ import com.nextplugins.tasks.command.registry.CommandRegistry;
 import com.nextplugins.tasks.configuration.registry.ConfigurationRegistry;
 import com.nextplugins.tasks.job.JobLoader;
 import com.nextplugins.tasks.manager.TaskManager;
+import com.nextplugins.tasks.metric.MetricsProvider;
 import com.nextplugins.tasks.parser.TimeExpressionParser;
 import lombok.Getter;
 import me.bristermitten.pdm.PluginDependencyManager;
@@ -34,6 +35,8 @@ public final class NextTasks extends JavaPlugin {
 
                 CommandRegistry.of(this).register();
 
+                MetricsProvider.of(this).configure();
+
                 getLogger().info("Plugin inicializado com sucesso.");
             } catch (Throwable t) {
                 t.printStackTrace();
@@ -51,4 +54,5 @@ public final class NextTasks extends JavaPlugin {
             t.printStackTrace();
         }
     }
+
 }

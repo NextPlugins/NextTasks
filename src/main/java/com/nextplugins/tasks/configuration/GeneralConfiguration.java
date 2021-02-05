@@ -23,6 +23,10 @@ public final class GeneralConfiguration implements ConfigurationInjectable {
 
     @Getter private static final GeneralConfiguration instance = new GeneralConfiguration();
 
+    // bStats
+
+    @ConfigField("bStats.enable") private boolean useBStats;
+
     // messages
 
     @ConfigField("messages.task-list.header") private List<String> taskListHeader;
