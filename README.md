@@ -19,9 +19,9 @@ O plugin conta com dois arquivos de configuração `config.yml` e `tasks.yml`, e
 O plugin não precisa de nenhuma dependência. As dependências de desenvolvimento são automaticamente baixadas na primeira inicialização do plugin pela da tecnologia `PDM`
 
 ### Tecnologias usadas
-- [PDM](https://github.com/knightzmc/pdm) - Baixa as dependências de desenvolvimento assim que o plugin é ligado pela primeira vez.
-- [Quartz](http://www.quartz-scheduler.org/) - Biblioteca robusta para agendamento de tarefas.
+-   [PDM](https://github.com/knightzmc/pdm) - Baixa as dependências de desenvolvimento assim que o plugin é ligado pela primeira vez.
+-   [Quartz](http://www.quartz-scheduler.org/) - Biblioteca robusta para agendamento de tarefas.
 
 **APIs e Frameworks**
 
-- [command-framework](https://github.com/SaiintBrisson/command-framework) - Framework para criação e gerenciamento de comandos.
+-   [command-framework](https://github.com/SaiintBrisson/command-framework) - Framework para criação e gerenciamento de comandos.
