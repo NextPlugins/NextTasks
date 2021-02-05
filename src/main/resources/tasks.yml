@@ -1,6 +1,3 @@
-# é altamente recomendado que você desligue e ligue o servidor ao invés do comando "/reload" a cada alteração
-# para limpar o registro de tasks anteriores e evitar a duplicação das mesmas.
-
 tasks:
   task-list:
     # id da task, precisa sempre ser diferente das outras.

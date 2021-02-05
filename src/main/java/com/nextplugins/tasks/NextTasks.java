@@ -12,7 +12,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NextTasks extends JavaPlugin {
 
-    @Getter private TaskManager taskManager;
+    @Getter private final TaskManager taskManager = new TaskManager();
+    private final JobLoader jobLoader = new JobLoader(taskManager);
 
     public static NextTasks getInstance() {
         return getPlugin(NextTasks.class);
@@ -25,12 +26,11 @@ public final class NextTasks extends JavaPlugin {
             try {
                 ConfigurationRegistry.of(this).register();
 
-                taskManager = new TaskManager();
                 taskManager.loadTasks();
 
                 new TimeExpressionParser(taskManager).parse();
 
-                new JobLoader(taskManager).executeAllJobs();
+                jobLoader.executeAllJobs();
 
                 CommandRegistry.of(this).register();
 
@@ -43,4 +43,12 @@ public final class NextTasks extends JavaPlugin {
         });
     }
 
+    @Override
+    public void onDisable() {
+        try {
+            jobLoader.clearAllJobs();
+        } catch (Throwable t) {
+            t.printStackTrace();
+        }
+    }
 }

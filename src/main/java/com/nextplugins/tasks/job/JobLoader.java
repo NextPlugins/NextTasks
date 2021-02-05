@@ -12,8 +12,9 @@ public final class JobLoader {
 
     private final TaskManager taskManager;
 
+    private final SchedulerFactory factory = new StdSchedulerFactory();
+
     public void executeAllJobs() throws Exception {
-        SchedulerFactory factory = new StdSchedulerFactory();
         Scheduler scheduler = factory.getScheduler();
 
         scheduler.start();
@@ -34,6 +35,12 @@ public final class JobLoader {
             scheduler.scheduleJob(detail, trigger);
 
         }
+    }
+
+    public void clearAllJobs() throws SchedulerException {
+        Scheduler scheduler = factory.getScheduler();
+
+        scheduler.clear();
     }
 
 }
