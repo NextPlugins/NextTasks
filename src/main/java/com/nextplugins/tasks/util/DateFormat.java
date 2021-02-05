@@ -32,7 +32,7 @@ public final class DateFormat {
             case "SATURDAY":
                 day = "Sábado";
                 break;
-            case "EVERYDAY":
+            default:
                 day = "Todos os dias";
                 break;
         }
