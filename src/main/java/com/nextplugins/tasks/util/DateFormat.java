@@ -15,19 +15,19 @@ public final class DateFormat {
                 day = "Domingo";
                 break;
             case "MONDAY":
-                day = "Segunda-Feira";
+                day = "Segunda-feira";
                 break;
             case "TUESDAY":
-                day = "Terça-Feira";
+                day = "Terça-feira";
                 break;
             case "WEDNESDAY":
-                day = "Quarta-Feira";
+                day = "Quarta-feira";
                 break;
             case "THURSDAY":
-                day = "Quinta-Feira";
+                day = "Quinta-feira";
                 break;
             case "FRIDAY":
-                day = "Sexta-Feira";
+                day = "Sexta-feira";
                 break;
             case "SATURDAY":
                 day = "Sábado";
