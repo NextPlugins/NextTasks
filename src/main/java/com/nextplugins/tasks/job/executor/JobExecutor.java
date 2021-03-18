@@ -16,18 +16,18 @@ public class JobExecutor implements Job {
 
     @Override
     public void execute(JobExecutionContext context) {
+        Bukkit.getScheduler().runTask(NextTasks.getInstance(), () -> {
+            Task task = taskManager.getTasks().get(context.getMergedJobDataMap().getString("task"));
 
-        Task task = taskManager.getTasks().get(context.getMergedJobDataMap().getString("task"));
+            for (String command : task.getJob().getCommandList()) {
+                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
+            }
 
-        for (String command : task.getJob().getCommandList()) {
-            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
-        }
-
-        Bukkit.getPluginManager().callEvent(new TaskExecuteEvent(
-                task,
-                new Date()
-        ));
-
+            Bukkit.getPluginManager().callEvent(new TaskExecuteEvent(
+                    task,
+                    new Date()
+            ));
+        });
     }
 
 }
