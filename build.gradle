@@ -1,7 +1,6 @@
 plugins {
     id 'java'
 
-    id 'me.bristermitten.pdm' version '0.0.30'
     id 'com.github.johnrengelman.shadow' version '5.0.0'
 
     id 'net.minecrell.plugin-yml.bukkit' version '0.3.0'
@@ -10,11 +9,10 @@ plugins {
 group 'com.nextplugins'
 version '1.0.1'
 
-tasks.build.dependsOn('pdm', 'shadowJar')
+tasks.build.dependsOn('shadowJar')
 
 repositories {
     mavenCentral()
-    jcenter()
 
     maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
     maven { url = 'https://oss.sonatype.org/content/groups/public/' }
@@ -26,15 +24,10 @@ repositories {
 
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
-    compile 'org.quartz-scheduler:quartz:2.3.2'
 
-    implementation 'com.github.HenryFabio.configuration-injector:common:main-SNAPSHOT'
+    implementation 'org.quartz-scheduler:quartz:2.3.2'
     implementation 'com.github.HenryFabio.configuration-injector:bukkit:main-SNAPSHOT'
-
-    pdm 'com.github.SaiintBrisson.command-framework:bukkit:1.2.0'
-    pdm 'com.github.SaiintBrisson.command-framework:shared:1.2.0'
-
-    pdm 'org.bstats:bstats-bukkit:1.8'
+    implementation 'com.github.SaiintBrisson.command-framework:bukkit:1.2.0'
 
     def lombok = 'org.projectlombok:lombok:1.18.16'
     compileOnly lombok
@@ -50,6 +43,10 @@ bukkit {
 shadowJar {
     archiveName("${project.name}-${project.version}.jar")
     relocate 'com.henryfabio.minecraft.configinjector', 'com.nextplugins.tasks.libs.configinjector'
+    relocate 'me.saiintbrisson.minecraft.command', 'com.nextplugins.tasks.libs.command.common'
+    relocate 'me.saiintbrisson.bukkit.command', 'com.nextplugins.tasks.libs.command.bukkit'
+    relocate 'com.mchange', 'com.nextplugins.tasks.libs.quartz'
+    relocate 'com.zaxxer.hikari', 'com.nextplugins.tasks.libs.hikari'
 }
 
 compileJava {
