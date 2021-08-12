@@ -2,12 +2,11 @@ plugins {
     id 'java'
 
     id 'com.github.johnrengelman.shadow' version '5.0.0'
-
     id 'net.minecrell.plugin-yml.bukkit' version '0.3.0'
 }
 
 group 'com.nextplugins'
-version '1.0.1'
+version '1.0.2'
 
 tasks.build.dependsOn('shadowJar')
 
@@ -23,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT'
 
     implementation 'org.quartz-scheduler:quartz:2.3.2'
     implementation 'com.github.HenryFabio.configuration-injector:bukkit:main-SNAPSHOT'
@@ -38,6 +37,7 @@ bukkit {
     main = 'com.nextplugins.tasks.NextTasks'
     authors = ['Henry_Fabio', 'Eike', 'Gabriel Santos', 'Yuhtin']
     website = 'https://github.com/NextPlugins'
+    apiVersion = '1.13'
 }
 
 shadowJar {
