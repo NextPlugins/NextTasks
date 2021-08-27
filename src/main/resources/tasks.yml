@@ -45,10 +45,3 @@ tasks:
       description: "Distribuir caixas."
       commands:
         - 'sorteio'
-    '4':
-      scheduler:
-        parser-type: 'ADVANCED'
-        date: '0 * 0 ? * * *'
-      description: 'Testes'
-      commands:
-        - 'say TESTANDO'
