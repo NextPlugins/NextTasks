@@ -11,7 +11,7 @@
 
 plugin:
   # Ative ou desative o uso do bStats (apenas serve para coletar algumas informações sobre o uso do plugin como
-  # quantidade de pessoas usando, servidores e etc...)
+  # quantidade de pessoas usando, servidores, etc...)
   bStats:
     enable: true
   messages:

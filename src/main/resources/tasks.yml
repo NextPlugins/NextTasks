@@ -1,11 +1,24 @@
 tasks:
   task-list:
-    # id da task, precisa sempre ser diferente das outras.
+    # identificador da task, precisa sempre diferir das outras.
     '1':
       # data em que será sempre executada.
       scheduler:
+        # tipo do parser do campo "date"
+
+        # ADVANCED = aceita as expressões de tempo padrão do Quartz (http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html)
+        # por esse tipo ser mais complexo, tem algumas ferramentas na ‘web’ que ajudam a criar as expressões mais facilmente
+        # exemplo: https://www.freeformatter.com/cron-expression-generator-quartz.html ou http://www.cronmaker.com/;jsessionid=node01ngqdecgm0wlyggpe722slbwf1620600.node0?0
+        # o tipo ADVANCED pode aceitar qualquer expressão de tempo desde que siga os padrões do Quartz.
+
+        # SIMPLE = a forma simples de criar uma tarefa no NextTasks
+        # deverá seguir o seguinte padrão: "DIA:HORA:MINUTO"
+        # obs: o nome do dia terá que ser obrigatoriamente em inglês, utilize "EVERYDAY" para ser executada diariamente
+        # exemplo: "MONDAY:17:30" -> será executada toda SEGUNDA-FEIRA às 17:30 da tarde.
+        parser-type: 'SIMPLE'
+
         # dia e horário em que será executado (o dia em inglês).
-        # obs: se quiser que execute todos os dias, utilize EVERYDAY no valor.
+        # obs: se quiser que execute diariamente, utilize EVERYDAY no valor.
         date: 'EVERYDAY:02:05'
       # descrição da task.
       description: "Dizer 'Olá mundo'"
@@ -14,8 +27,28 @@ tasks:
         - 'say Hello World :)'
     '2':
       scheduler:
+        parser-type: 'SIMPLE'
         date: 'TUESDAY:01:30'
       description: "Distribuir caixas."
       commands:
         - 'caixa all'
         - 'say Foi dado uma caixa para todos os jogadores online!'
+
+    # exemplo de uma task utilizando as expressões avançadas de agendamento do Quartz
+    # expressão de tempo: "0 0 12-17 ? 1 SUN,SAT *" = irá ser executada a cada 1 HORA no período das 12:00 (meio-dia)
+    # até 17:00 (5 horas da tarde) todos os sábados e domingos
+    # utilizando as expressões avançadas, você pode ter uma maior liberdade para criar suas tarefas!
+    '3':
+      scheduler:
+        parser-type: 'ADVANCED'
+        date: '0 0 12-17 ? 1 SUN,SAT *'
+      description: "Distribuir caixas."
+      commands:
+        - 'sorteio'
+    '4':
+      scheduler:
+        parser-type: 'ADVANCED'
+        date: '0 * 0 ? * * *'
+      description: 'Testes'
+      commands:
+        - 'say TESTANDO'
