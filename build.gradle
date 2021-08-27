@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'com.nextplugins'
-version '1.0.2'
+version '1.0.3'
 
 tasks.build.dependsOn('shadowJar')
 
@@ -28,7 +28,7 @@ dependencies {
     implementation 'com.github.HenryFabio.configuration-injector:bukkit:main-SNAPSHOT'
     implementation 'com.github.SaiintBrisson.command-framework:bukkit:1.2.0'
 
-    def lombok = 'org.projectlombok:lombok:1.18.16'
+    def lombok = 'org.projectlombok:lombok:1.18.20'
     compileOnly lombok
     annotationProcessor lombok
 }
