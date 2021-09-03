@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import me.saiintbrisson.minecraft.command.annotation.Command;
 import me.saiintbrisson.minecraft.command.command.Context;
 import me.saiintbrisson.minecraft.command.target.CommandTarget;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 @RequiredArgsConstructor
@@ -16,21 +17,23 @@ public final class TaskCommand {
     private final TaskManager taskManager;
 
     @Command(
-            name = "tasks",
-            aliases = {"tarefas"},
-            permission = "nexttasks.command.tasks",
-            description = "Liste todas as tarefas agendadas.",
-            target = CommandTarget.PLAYER,
-            async = true
+        name = "tasks",
+        aliases = {"tarefas"},
+        permission = "nexttasks.command.tasks",
+        description = "Liste todas as tarefas agendadas.",
+        target = CommandTarget.PLAYER,
+        async = true
     )
     public void taskCommand(Context<Player> context) {
         Player player = context.getSender();
 
         GeneralConfiguration.get(GeneralConfiguration::taskListHeader).forEach(player::sendMessage);
         for (Task task : taskManager.getTasks().values()) {
+            final String description = ChatColor.translateAlternateColorCodes('&', task.getJob().getDescription());
+
             player.spigot().sendMessage(TextUtil.sendTextComponent(GeneralConfiguration.get(GeneralConfiguration::taskListBody)
-                    .replace("$executionDate", task.getFormattedExecutionDate())
-                    .replace("$taskDescription", task.getJob().getDescription()), "§aId da task:§f #" + task.getId()));
+                .replace("$executionDate", task.getFormattedExecutionDate())
+                .replace("$taskDescription", description), "§aId da task:§f #" + task.getId()));
 
         }
         GeneralConfiguration.get(GeneralConfiguration::taskListFooter).forEach(player::sendMessage);
