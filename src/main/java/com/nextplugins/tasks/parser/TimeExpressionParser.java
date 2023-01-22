@@ -22,11 +22,8 @@ public final class TimeExpressionParser {
                 String hour = split[1];
                 String minute = split[2];
 
-                task.setDateExpression(MODEL
-                    .replace("M", minute)
-                    .replace("H", hour)
-                    .replace("D", day)
-                );
+                task.setDateExpression(
+                        MODEL.replace("M", minute).replace("H", hour).replace("D", day));
             } else {
                 task.setDateExpression(expression);
             }

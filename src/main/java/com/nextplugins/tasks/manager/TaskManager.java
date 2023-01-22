@@ -6,19 +6,19 @@ import com.nextplugins.tasks.api.model.type.ParserType;
 import com.nextplugins.tasks.configuration.TaskConfiguration;
 import com.nextplugins.tasks.parser.TimeExpressionParser;
 import com.nextplugins.tasks.util.DateFormat;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import org.bukkit.configuration.ConfigurationSection;
-
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.bukkit.configuration.ConfigurationSection;
 
 @RequiredArgsConstructor
 public final class TaskManager {
 
     @Getter
     private final Map<String, Task> tasks = new LinkedHashMap<>();
+
     @Getter
     private final Map<Task, String> dateMap = new LinkedHashMap<>();
 
@@ -51,8 +51,7 @@ public final class TaskManager {
                     .job(Job.builder()
                             .commandList(commands)
                             .description(description)
-                            .build()
-                    )
+                            .build())
                     .formattedExecutionDate(formattedData)
                     .dateExpression(date)
                     .parserType(parserType)

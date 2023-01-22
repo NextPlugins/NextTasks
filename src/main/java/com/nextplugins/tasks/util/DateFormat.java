@@ -39,5 +39,4 @@ public final class DateFormat {
 
         return day + " ás " + hour + ":" + minute;
     }
-
 }

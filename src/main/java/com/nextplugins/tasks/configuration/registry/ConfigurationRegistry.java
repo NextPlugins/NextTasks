@@ -14,15 +14,9 @@ public final class ConfigurationRegistry {
     public void register() {
         BukkitConfigurationInjector configurationInjector = new BukkitConfigurationInjector(plugin);
 
-        configurationInjector.saveDefaultConfiguration(
-                plugin,
-                "tasks.yml"
-        );
+        configurationInjector.saveDefaultConfiguration(plugin, "tasks.yml");
 
-        configurationInjector.injectConfiguration(
-                GeneralConfiguration.instance(),
-                TaskConfiguration.instance()
-        );
+        configurationInjector.injectConfiguration(GeneralConfiguration.instance(), TaskConfiguration.instance());
     }
 
     public boolean reload() {

@@ -13,5 +13,4 @@ public class Task {
     private final Job job;
     private final ParserType parserType;
     private String dateExpression, formattedExecutionDate;
-
 }

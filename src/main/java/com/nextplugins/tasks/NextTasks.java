@@ -6,12 +6,11 @@ import com.nextplugins.tasks.command.registry.CommandRegistry;
 import com.nextplugins.tasks.configuration.registry.ConfigurationRegistry;
 import com.nextplugins.tasks.job.JobLoader;
 import com.nextplugins.tasks.manager.TaskManager;
+import java.util.logging.Level;
 import lombok.Getter;
 import lombok.val;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.logging.Level;
 
 @Getter
 public final class NextTasks extends JavaPlugin {
@@ -59,5 +58,4 @@ public final class NextTasks extends JavaPlugin {
             t.printStackTrace();
         }
     }
-
 }

@@ -24,20 +24,22 @@ public final class TaskCommand {
             permission = "nexttasks.command.tasks",
             description = "Liste todas as tarefas agendadas.",
             target = CommandTarget.PLAYER,
-            async = true
-    )
+            async = true)
     public void taskCommand(Context<Player> context) {
         final Player sender = context.getSender();
 
         GeneralConfiguration.get(GeneralConfiguration::taskListHeader).forEach(sender::sendMessage);
 
         for (Task task : taskManager.getTasks().values()) {
-            final String description = ChatColor.translateAlternateColorCodes('&', task.getJob().getDescription());
+            final String description =
+                    ChatColor.translateAlternateColorCodes('&', task.getJob().getDescription());
 
-            sender.spigot().sendMessage(TextUtil.sendTextComponent(GeneralConfiguration.get(GeneralConfiguration::taskListBody)
-                    .replace("$executionDate", task.getFormattedExecutionDate())
-                    .replace("$taskDescription", description), "§aId da task:§f #" + task.getId()));
-
+            sender.spigot()
+                    .sendMessage(TextUtil.sendTextComponent(
+                            GeneralConfiguration.get(GeneralConfiguration::taskListBody)
+                                    .replace("$executionDate", task.getFormattedExecutionDate())
+                                    .replace("$taskDescription", description),
+                            "§aId da task:§f #" + task.getId()));
         }
 
         GeneralConfiguration.get(GeneralConfiguration::taskListFooter).forEach(sender::sendMessage);
@@ -48,15 +50,15 @@ public final class TaskCommand {
             aliases = {"recarregar"},
             permission = "nexttasks.command.reload",
             description = "Recarregue os arquivos de configurações do plugin.",
-            async = true
-    )
+            async = true)
     public void taskReloadCommand(Context<Player> context) {
         final boolean reloadResult = configurationRegistry.reload();
 
         if (reloadResult) {
             context.sendMessage(ChatColor.GREEN + "Arquivos de configuração recarregados com sucesso.");
         } else {
-            context.sendMessage(ChatColor.RED + "Não foi possível recarregar os arquivos de configuração, veja o console.");
+            context.sendMessage(
+                    ChatColor.RED + "Não foi possível recarregar os arquivos de configuração, veja o console.");
         }
     }
 }

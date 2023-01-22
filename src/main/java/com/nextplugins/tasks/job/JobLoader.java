@@ -21,15 +21,15 @@ public final class JobLoader {
 
         for (Task task : taskManager.getTasks().values()) {
             final JobDetail detail = JobBuilder.newJob(JobExecutor.class)
-                .withIdentity(task.getId(), "NextPlugins")
-                .usingJobData("task", task.getId())
-                .build();
+                    .withIdentity(task.getId(), "NextPlugins")
+                    .usingJobData("task", task.getId())
+                    .build();
 
             final CronTrigger trigger = TriggerBuilder.newTrigger()
-                .withIdentity(task.getId() + "-TRIGGER", "NextPlugins")
-                .withSchedule(CronScheduleBuilder.cronSchedule(task.getDateExpression()))
-                .forJob(detail)
-                .build();
+                    .withIdentity(task.getId() + "-TRIGGER", "NextPlugins")
+                    .withSchedule(CronScheduleBuilder.cronSchedule(task.getDateExpression()))
+                    .forJob(detail)
+                    .build();
 
             scheduler.scheduleJob(detail, trigger);
         }

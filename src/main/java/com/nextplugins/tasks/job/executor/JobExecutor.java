@@ -4,11 +4,10 @@ import com.nextplugins.tasks.NextTasks;
 import com.nextplugins.tasks.api.event.TaskExecuteEvent;
 import com.nextplugins.tasks.api.model.Task;
 import com.nextplugins.tasks.manager.TaskManager;
+import java.util.Date;
 import org.bukkit.Bukkit;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
-
-import java.util.Date;
 
 public class JobExecutor implements Job {
 
@@ -23,11 +22,7 @@ public class JobExecutor implements Job {
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command);
             }
 
-            Bukkit.getPluginManager().callEvent(new TaskExecuteEvent(
-                    task,
-                    new Date()
-            ));
+            Bukkit.getPluginManager().callEvent(new TaskExecuteEvent(task, new Date()));
         });
     }
-
 }

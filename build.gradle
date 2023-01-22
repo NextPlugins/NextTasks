@@ -1,14 +1,16 @@
 plugins {
     id 'java'
 
-    id 'com.github.johnrengelman.shadow' version '5.0.0'
-    id 'net.minecrell.plugin-yml.bukkit' version '0.3.0'
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+    id "net.minecrell.plugin-yml.bukkit" version "0.5.2"
+
+    id "com.diffplug.spotless" version "6.13.0"
 }
 
 group 'com.nextplugins'
-version '1.0.3'
+version '1.1.0'
 
-tasks.build.dependsOn('shadowJar')
+tasks.build.dependsOn('spotlessApply', 'shadowJar')
 
 repositories {
     mavenCentral()
@@ -28,7 +30,7 @@ dependencies {
     implementation 'com.github.HenryFabio.configuration-injector:bukkit:main-SNAPSHOT'
     implementation 'com.github.SaiintBrisson.command-framework:bukkit:1.2.0'
 
-    def lombok = 'org.projectlombok:lombok:1.18.20'
+    def lombok = 'org.projectlombok:lombok:1.18.24'
     compileOnly lombok
     annotationProcessor lombok
 }
@@ -54,4 +56,13 @@ compileJava {
 
     sourceCompatibility = '1.8'
     targetCompatibility = '1.8'
+}
+
+spotless {
+    java {
+        removeUnusedImports()
+        palantirJavaFormat()
+        formatAnnotations()
+        endWithNewline()
+    }
 }
