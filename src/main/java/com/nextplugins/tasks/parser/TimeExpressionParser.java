@@ -4,7 +4,7 @@ import com.nextplugins.tasks.api.model.type.ParserType;
 import com.nextplugins.tasks.manager.TaskManager;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+@RequiredArgsConstructor(staticName = "of")
 public final class TimeExpressionParser {
 
     private final String MODEL = "0 M H ? * D";
@@ -12,9 +12,7 @@ public final class TimeExpressionParser {
     private final TaskManager taskManager;
 
     public void parse() {
-
         taskManager.getDateMap().forEach((task, expression) -> {
-
             if (task.getParserType() == ParserType.SIMPLE) {
                 String[] split = expression.split(":");
 
@@ -32,9 +30,6 @@ public final class TimeExpressionParser {
             } else {
                 task.setDateExpression(expression);
             }
-
         });
-
     }
-
 }

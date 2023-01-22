@@ -16,11 +16,9 @@ public final class CommandRegistry {
         BukkitFrame bukkitFrame = new BukkitFrame(plugin);
 
         bukkitFrame.registerCommands(
-                new TaskCommand(plugin.getTaskManager())
+                new TaskCommand(plugin.getTaskManager(), plugin.getConfigurationRegistry())
         );
 
         bukkitFrame.getMessageHolder().setMessage(MessageType.NO_PERMISSION, GeneralConfiguration.get(GeneralConfiguration::noPermission));
-
     }
-
 }

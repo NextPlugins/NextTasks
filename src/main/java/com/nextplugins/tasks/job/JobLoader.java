@@ -14,13 +14,12 @@ public final class JobLoader {
 
     private final SchedulerFactory factory = new StdSchedulerFactory();
 
-    public void executeAllJobs() throws Exception {
-        Scheduler scheduler = factory.getScheduler();
+    public void scheduleAllJobs() throws Exception {
+        final Scheduler scheduler = factory.getScheduler();
 
         scheduler.start();
 
         for (Task task : taskManager.getTasks().values()) {
-
             final JobDetail detail = JobBuilder.newJob(JobExecutor.class)
                 .withIdentity(task.getId(), "NextPlugins")
                 .usingJobData("task", task.getId())
@@ -33,14 +32,12 @@ public final class JobLoader {
                 .build();
 
             scheduler.scheduleJob(detail, trigger);
-
         }
     }
 
     public void clearAllJobs() throws SchedulerException {
-        Scheduler scheduler = factory.getScheduler();
+        final Scheduler scheduler = factory.getScheduler();
 
         scheduler.clear();
     }
-
 }

@@ -1,12 +1,11 @@
 package com.nextplugins.tasks;
 
 import com.google.common.base.Stopwatch;
+import com.nextplugins.tasks.api.metric.MetricProvider;
 import com.nextplugins.tasks.command.registry.CommandRegistry;
 import com.nextplugins.tasks.configuration.registry.ConfigurationRegistry;
 import com.nextplugins.tasks.job.JobLoader;
 import com.nextplugins.tasks.manager.TaskManager;
-import com.nextplugins.tasks.api.metric.MetricProvider;
-import com.nextplugins.tasks.parser.TimeExpressionParser;
 import lombok.Getter;
 import lombok.val;
 import org.bukkit.Bukkit;
@@ -14,11 +13,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
 
+@Getter
 public final class NextTasks extends JavaPlugin {
 
-    @Getter
     private final TaskManager taskManager = new TaskManager();
     private final JobLoader jobLoader = new JobLoader(taskManager);
+
+    private final ConfigurationRegistry configurationRegistry = ConfigurationRegistry.of(this);
 
     public static NextTasks getInstance() {
         return getPlugin(NextTasks.class);
@@ -31,13 +32,11 @@ public final class NextTasks extends JavaPlugin {
 
         val loadTime = Stopwatch.createStarted();
         try {
-            ConfigurationRegistry.of(this).register();
+            configurationRegistry.register();
 
             taskManager.loadTasks();
 
-            new TimeExpressionParser(taskManager).parse();
-
-            jobLoader.executeAllJobs();
+            jobLoader.scheduleAllJobs();
 
             CommandRegistry.of(this).register();
             MetricProvider.of(this).register();

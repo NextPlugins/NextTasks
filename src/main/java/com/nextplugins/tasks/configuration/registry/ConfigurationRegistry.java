@@ -25,4 +25,20 @@ public final class ConfigurationRegistry {
         );
     }
 
+    public boolean reload() {
+        try {
+            register();
+
+            plugin.getJobLoader().clearAllJobs();
+            plugin.getTaskManager().clear();
+
+            plugin.getTaskManager().loadTasks();
+            plugin.getJobLoader().scheduleAllJobs();
+
+            return true;
+        } catch (Throwable t) {
+            t.printStackTrace();
+            return false;
+        }
+    }
 }
